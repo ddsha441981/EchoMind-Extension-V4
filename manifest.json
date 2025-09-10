@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "EchoMind-4",
+  "version": "4.0",
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["prompt.txt"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://gemini.google.com/*",
+        "https://chatgpt.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://www.deepseek.com/*", "https://chat.deepseek.com/*",
+        "https://www.blackbox.ai/*",
+        "https://grok.x.ai/*",
+        "https://claude.ai/*", "https://www.anthropic.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "http://localhost:8080/",
+    "https://gemini.google.com/*",
+    "https://chatgpt.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://www.deepseek.com/*", "https://chat.deepseek.com/*",
+    "https://www.blackbox.ai/*",
+    "https://grok.x.ai/*",
+    "https://claude.ai/*", "https://www.anthropic.com/*"
+  ],
+  "icons": {
+    "16": "icon/icon16.png",
+    "32": "icon/icon32.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
+  }
+}
